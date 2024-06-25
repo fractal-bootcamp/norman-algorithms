@@ -1,17 +1,16 @@
 "use client";
 
-import bubbleSort from "../../scripts";
+import { bubbleSort } from "../../scripts";
 import { useState, useEffect, ChangeEvent } from "react";
 
-/*
-interface inputProps {
-  setData: React.Dispatch<React.SetStateAction<string>>;
-    
-  data.steps
-}
-*/
+type BarProps = {
+  data: {
+    sorted: number[];
+    steps: number[];
+  };
+};
 
-const Bars = ({ data }) => {
+const Bars = ({ data }: BarProps) => {
   const [step, setStep] = useState(0);
 
   console.log(data);
@@ -38,8 +37,9 @@ const Bars = ({ data }) => {
       </button>
 
       <div style={{ display: "flex" }}>
-        {data.steps[step].map((element) => (
+        {data.steps[step].map((element, index) => (
           <div
+            key={index}
             style={{
               background: "green",
               height: `${(element * 10).toString()}px`,
