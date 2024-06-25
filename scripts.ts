@@ -13,7 +13,7 @@ const bubbleStep = (input: Number[]) => {
   return nextStep;
 };
 
-const bubbleSort = (input: Number[]) => {
+export const bubbleSort = (input: Number[]) => {
   let steps = [];
   while (
     !input.every(
@@ -30,4 +30,33 @@ const bubbleSort = (input: Number[]) => {
   return bubbleSortResult;
 };
 
-export default bubbleSort;
+export const selectionSort = (input: Number[]) => {
+  let steps = [];
+  for (let i = 0; i < input.length - 1; i++) {
+    let smallest = input[i];
+    let index = i;
+    //retrieves smallest element in list, and index
+    for (let j = i + 1; j < input.length; j++) {
+      if (input[j] < smallest) {
+        smallest = input[j];
+        index = j;
+      }
+    }
+    input[index] = input[i];
+    input[i] = smallest;
+    steps.push(input);
+  }
+
+  const selectionSortResult = { sorted: input, steps: steps };
+  return selectionSortResult;
+};
+
+const insertionSort = (input: Number[]) => {
+  const nextStep = input;
+};
+const mergeSort = (input: Number[]) => {
+  const nextStep = input;
+};
+const quickSort = (input: Number[]) => {
+  const nextStep = input;
+};
