@@ -1,7 +1,7 @@
 "use client";
 
-import { bubbleSort } from "../../scripts";
-import { useState, useEffect, ChangeEvent } from "react";
+import { bubbleSort, selectionSort, insertionSort } from "../../scripts";
+import { useState, ChangeEvent } from "react";
 
 type BarProps = {
   data: {
@@ -60,6 +60,7 @@ const Input = ({ setData }) => {
   //converts string event.target.value to Int[], checking for Nan
   const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const integer = parseInt(event.target.value);
+
     if (typeof integer === "number" && !Number.isNaN(integer)) {
       setInput(Array.from(String(integer), Number));
     }
@@ -69,7 +70,16 @@ const Input = ({ setData }) => {
     <div>
       {/* onChange sends events to a callback function */}
       <input onChange={inputHandler}></input>
+      <br />
       <button onClick={() => setData(bubbleSort(input))}> BubbleSort! </button>
+      <br />
+      <button onClick={() => setData(selectionSort(input))}>
+        SelectionSort!
+      </button>
+      <br />
+      <button onClick={() => setData(insertionSort(input))}>
+        InsertionSort!
+      </button>
     </div>
   );
 };
