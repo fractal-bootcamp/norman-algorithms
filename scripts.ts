@@ -14,7 +14,7 @@ const bubbleStep = (input: number[]) => {
 };
 
 export const bubbleSort = (input: number[]) => {
-  let steps = [];
+  let steps = [[...input]];
   while (
     !input.every(
       (currentElement, currentIndex) =>
@@ -31,31 +31,32 @@ export const bubbleSort = (input: number[]) => {
 };
 
 export const selectionSort = (input: number[]) => {
-  let steps = [];
+  let clone = structuredClone(input);
+  let steps = [[...clone]];
   for (let i = 0; i < input.length - 1; i++) {
-    let smallest = input[i];
+    let smallest = clone[i];
     let index = i;
     //retrieves smallest element in list, and index
-    for (let j = i + 1; j < input.length; j++) {
-      if (input[j] < smallest) {
-        smallest = input[j];
+    for (let j = i + 1; j < clone.length; j++) {
+      if (clone[j] < smallest) {
+        smallest = clone[j];
         index = j;
       }
     }
-    input[index] = input[i];
-    input[i] = smallest;
-    const stepBuilder = [...input];
+    clone[index] = clone[i];
+    clone[i] = smallest;
+    const stepBuilder = [...clone];
     steps.push(stepBuilder);
   }
 
-  const selectionSortResult = { sorted: input, steps: steps };
+  const selectionSortResult = { sorted: clone, steps: steps };
   return selectionSortResult;
 };
 
 //probably splice and join?
 
 export const insertionSort = (input: number[]) => {
-  let steps = [];
+  let steps = [[...input]];
   let sorted = [input[0]];
   for (let j = 1; j < input.length; j++) {
     if (input[j] < sorted[0]) {

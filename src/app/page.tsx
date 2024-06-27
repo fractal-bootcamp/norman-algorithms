@@ -12,9 +12,7 @@ type BarProps = {
 
 const Bars = ({ data }: BarProps) => {
   const [step, setStep] = useState(0);
-
   console.log(data);
-
   return (
     <>
       <button

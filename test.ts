@@ -96,6 +96,16 @@ const insertionSort = (input) => {
   return sorted;
 };
 
-console.log(insertionSort([0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]));
+const mergeSort = (inputArray) => {
+  if (inputArray.length == 1) {
+  }
+  if (inputArray.length == 2) {
+  }
+  const subArrayA = inputArray.splice(0);
+  const subArrayB = inputArray.splice();
+  return mergeSort(inputArray);
+};
 //assign the name input thru parameter
 //splice inserts BEFORE the start
+
+[1, 2, 3].splice();
